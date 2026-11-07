@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Planes y precios (USD) — SecAuditAD Application</title>
+<meta name="description" content="Planes de auditoría de Active Directory para Ecuador: Jr US$1.900 · Senior US$4.500 · Premium US$9.800. Comparación, complementos y FAQ.">
+<meta name="author" content="Alex Alcivar M">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="index.html"><svg width="27" height="31" viewBox="0 0 24 26" fill="none" aria-hidden="true"><path d="M12 1 2.5 4.6v7.1c0 6.2 4 11.6 9.5 13.3 5.5-1.7 9.5-7.1 9.5-13.3V4.6L12 1Z" fill="rgba(225,29,46,.16)" stroke="#e11d2e" stroke-width="1.6"/><path d="M7.5 12.4l3.1 3.2 6-6.4" stroke="#ff4d5a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Sec<b>Audit</b>AD <span class="app">Application</span></a>
+    <nav class="main"><a href="index.html">Inicio</a>
+<a href="planes.html" class="active">Planes</a>
+<a href="propuesta.html">Propuesta</a>
+<a href="controles.html">Controles</a>
+<a href="demo.html">Demo</a>
+<a href="informes.html">Informes</a>
+<a href="normativa.html">Normativa</a>
+<a href="nexos.html">Nexos</a></nav>
+  </div>
+</header>
+<main>
+
+<section class="hero" style="padding-bottom:10px">
+  <div class="wrap">
+    <span class="kicker">Precios · Ecuador · USD</span>
+    <h1>Planes de <em>auditoría</em> de Active Directory</h1>
+    <p class="lead">Tres planes, un mismo motor. Cada plan ejecuta las fases que contratas y define entregables concretos.
+    Todos incluyen ejecución <b>solo lectura</b>, score 0-100 y exportación de evidencia (JSON + CSV).</p>
+  </div>
+</section>
+
+<section class="block" style="padding-top:20px">
+  <div class="wrap">
+    <div class="grid g3" id="planCards"></div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <header class="reveal"><span class="eyebrow">Comparación</span><h2>¿Qué incluye cada plan?</h2></header>
+    <div class="tablebox reveal"><div class="scroll"><table id="cmpTable"></table></div></div>
+    <p class="small" style="margin-top:10px">El precio final se confirma en la propuesta según número de controladores de dominio, usuarios y sitios. Ver <a href="propuesta.html">propuesta comercial</a>.</p>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <header class="reveal"><span class="eyebrow">Complementos</span><h2>Servicios adicionales</h2></header>
+    <div class="grid g4" id="addonCards"></div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <header class="reveal"><span class="eyebrow">Preguntas frecuentes</span><h2>Lo que todos preguntan</h2></header>
+    <div class="acc"><button class="q">¿Tocan o modifican mis servidores? <i>+</i></button><div class="a">No. SecAuditAD ejecuta únicamente comandos de consulta (solo lectura), aislados en subprocesos con límite de tiempo. Está garantizado por diseño: el motor no contiene ninguna operación de modificación del directorio.</div></div>
+    <div class="acc"><button class="q">¿Cuánto tarda la auditoría? <i>+</i></button><div class="a">La ejecución técnica toma entre 2 y 10 minutos de máquina según el tamaño del dominio; el servicio completo (ejecución + revisión + informes) se entrega en 1 día (Jr), 2 días (Senior) o 3 días (Premium).</div></div>
+    <div class="acc"><button class="q">¿Qué necesito para que funcione? <i>+</i></button><div class="a">Windows con PowerShell 5.1 o 7.x y RSAT ActiveDirectory (o ejecutar directamente en un controlador de dominio). No se instala ningún agente ni software en los servidores.</div></div>
+    <div class="acc"><button class="q">¿Qué recibo exactamente? <i>+</i></button><div class="a">Según el plan: informe técnico HTML interactivo (filtros, hallazgos expandibles, mapeo normativo), informe ejecutivo en lenguaje de negocio con multas en USD, exportación JSON/CSV de evidencia y, en Premium, plan de remediación priorizado, taller y re-auditoría de verificación.</div></div>
+    <div class="acc"><button class="q">¿Los valores incluyen impuestos? <i>+</i></button><div class="a">Son valores referenciales en dólares (USD), moneda oficial de Ecuador. La propuesta formal detalla la inversión final, forma de pago y comprobantes aplicables según tu organización.</div></div>
+  </div>
+</section>
+
+</main>
+<footer class="site">
+  <div class="wrap">
+    <div class="cols">
+      <div style="max-width:360px">
+        <a class="brand" href="index.html"><svg width="27" height="31" viewBox="0 0 24 26" fill="none" aria-hidden="true"><path d="M12 1 2.5 4.6v7.1c0 6.2 4 11.6 9.5 13.3 5.5-1.7 9.5-7.1 9.5-13.3V4.6L12 1Z" fill="rgba(225,29,46,.16)" stroke="#e11d2e" stroke-width="1.6"/><path d="M7.5 12.4l3.1 3.2 6-6.4" stroke="#ff4d5a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Sec<b>Audit</b>AD</a>
+        <p class="small" style="margin-top:10px">Suite propietaria de auditoría de seguridad de Active Directory — solo lectura, dictamen binario y score 0-100 con evidencia defendible.</p>
+      </div>
+      <div>
+        <p class="eyebrow" style="margin-bottom:8px">Navegación</p>
+        <p class="small"><a href="index.html">Inicio</a>
+<a href="planes.html" class="active">Planes</a>
+<a href="propuesta.html">Propuesta</a>
+<a href="controles.html">Controles</a>
+<a href="demo.html">Demo</a>
+<a href="informes.html">Informes</a>
+<a href="normativa.html">Normativa</a>
+<a href="nexos.html">Nexos</a></p>
+      </div>
+      <div>
+        <p class="eyebrow" style="margin-bottom:8px">Contacto</p>
+        <p class="small">
+          Alex Alcivar M · Guayaquil, Ecuador<br>
+          <a href="#" data-contact="whatsapp"></a><br>
+          <a href="#" data-contact="email"></a><br>
+          <a href="#" data-contact="linkedin"></a>
+        </p>
+      </div>
+    </div>
+    <div class="legal">
+      © 2026 <b>Alex Alcivar M</b> · Guayaquil, Ecuador · Todos los derechos reservados · Obra propietaria: prohibida su copia, modificación o reutilización (ver licencia en el repositorio SecAuditAD).<br>
+      Valores expresados en <b>dólares estadounidenses (USD)</b> · SecAuditAD v1.0.0 · Los casos de sanciones citan fuentes oficiales; las conversiones a USD son referenciales.
+    </div>
+  </div>
+</footer>
+<div class="overlay" id="overlay" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true">
+    <button class="close" onclick="closeModal()" aria-label="Cerrar">✕</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+(function(){
+  var order=["JR","SENIOR","PREMIUM"];
+  document.getElementById("planCards").innerHTML = order.map(function(k){
+    var p=DATA.PLANS[k];
+    return '<div class="plancard reveal in'+(k==="PREMIUM"?" featured":"")+'">'+
+      (k==="PREMIUM"?'<span class="ribbon">Más elegido por empresas</span>':"")+
+      '<h3>'+p.label+'</h3><p class="tagline">'+p.description+'</p>'+
+      '<div class="price"><b>US$ '+p.priceUSD.toLocaleString("es-EC")+'</b><span>referencial</span></div>'+
+      '<div class="meta"><span class="chip acc">'+p.controls+' controles</span><span class="chip">'+p.durationDays+' día'+(p.durationDays>1?"s":"")+'</span></div>'+
+      '<ul>'+p.deliverables.map(f=>'<li>'+f+'</li>').join("")+'</ul>'+
+      '<a class="btn'+(k==="PREMIUM"?"":" ghost")+'" href="propuesta.html?plan='+k+'">Solicitar propuesta</a></div>';
+  }).join("");
+
+  var rows=[
+    ["Fases ejecutadas", p=>("Fase "+p.phases.join(" · Fase "))],
+    ["Controles", p=>'<b class="num">'+p.controls+'</b>'],
+    ["Alcance típico", p=>p.scope],
+    ["Duración del servicio", p=>p.durationDays+" día"+(p.durationDays>1?"s":"")],
+    ["Informe técnico interactivo", p=>p.controls>=27?"✅":"—"],
+    ["Informe ejecutivo (negocio + USD)", p=>p.phases.length>=3?"✅":"Resumen 2 págs."],
+    ["Exportación evidencia JSON + CSV", p=>"✅"],
+    ["Presentación de hallazgos", p=>p.phases.length>=3?"✅ (60 min)":"—"],
+    ["Plan de remediación priorizado", p=>p.controls>=54?"✅":"—"],
+    ["Taller de remediación con TI", p=>p.controls>=54?"✅ (2 h)":"—"],
+    ["Re-auditoría de verificación", p=>p.controls>=54?"✅ (30 días)":"—"],
+    ["<b>Valor referencial</b>", p=>'<b class="num">US$ '+p.priceUSD.toLocaleString("es-EC")+'</b>']
+  ];
+  document.getElementById("cmpTable").innerHTML =
+    '<thead><tr><th>Característica</th><th>Auditoría Jr</th><th>Auditoría Senior</th><th>Auditoría Premium</th></tr></thead><tbody>'+
+    rows.map(r=>'<tr><td>'+r[0]+'</td>'+order.map(k=>'<td>'+r[1](DATA.PLANS[k])+'</td>').join("")+'</tr>').join("")+'</tbody>';
+
+  document.getElementById("addonCards").innerHTML = DATA.ADDONS.map(a=>
+    '<div class="card reveal in"><h3>'+a.label+'</h3><p class="price" style="margin:8px 0 0"><b style="font-size:1.4rem;color:var(--acc2)">US$ '+a.priceUSD.toLocaleString("es-EC")+'</b></p></div>').join("");
+})();
+</script>
+</body>
+</html>

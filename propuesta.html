@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Propuesta comercial por plan — SecAuditAD Application</title>
+<meta name="description" content="Genera la propuesta comercial de auditoría AD por plan: alcance, cronograma, inversión en USD e impresión a PDF.">
+<meta name="author" content="Alex Alcivar M">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="index.html"><svg width="27" height="31" viewBox="0 0 24 26" fill="none" aria-hidden="true"><path d="M12 1 2.5 4.6v7.1c0 6.2 4 11.6 9.5 13.3 5.5-1.7 9.5-7.1 9.5-13.3V4.6L12 1Z" fill="rgba(225,29,46,.16)" stroke="#e11d2e" stroke-width="1.6"/><path d="M7.5 12.4l3.1 3.2 6-6.4" stroke="#ff4d5a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Sec<b>Audit</b>AD <span class="app">Application</span></a>
+    <nav class="main"><a href="index.html">Inicio</a>
+<a href="planes.html">Planes</a>
+<a href="propuesta.html" class="active">Propuesta</a>
+<a href="controles.html">Controles</a>
+<a href="demo.html">Demo</a>
+<a href="informes.html">Informes</a>
+<a href="normativa.html">Normativa</a>
+<a href="nexos.html">Nexos</a></nav>
+  </div>
+</header>
+<main>
+
+<section class="hero" style="padding-bottom:6px">
+  <div class="wrap">
+    <span class="kicker">Propuesta comercial</span>
+    <h1>Genera tu <em>propuesta</em> en 30 segundos</h1>
+    <p class="lead">Selecciona el plan, escribe el nombre del cliente y añade complementos: el documento se arma al instante.
+    Puedes <b>imprimirlo o guardarlo como PDF</b> (Ctrl+P) para enviarlo a tu cliente.</p>
+  </div>
+</section>
+
+<section class="block no-print" style="padding-top:16px">
+  <div class="wrap">
+    <div class="card" style="display:flex;gap:14px;flex-wrap:wrap;align-items:end">
+      <div><label class="small" for="selPlan">Plan</label><br>
+        <select id="selPlan"><option value="JR">Auditoría Jr</option><option value="SENIOR">Auditoría Senior</option><option value="PREMIUM">Auditoría Premium</option></select></div>
+      <div style="flex:1;min-width:220px"><label class="small" for="inpClient">Cliente (opcional)</label><br>
+        <input id="inpClient" type="text" placeholder="Ej. Comercial Andina S.A."></div>
+      <div><label class="small" for="inpDate">Fecha</label><br><input id="inpDate" type="date"></div>
+      <button class="btn" id="btnPrint">Imprimir / PDF</button>
+    </div>
+  </div>
+</section>
+
+<section class="block" style="padding-top:8px">
+  <div class="wrap"><div class="card" id="doc"></div></div>
+</section>
+
+</main>
+<footer class="site">
+  <div class="wrap">
+    <div class="cols">
+      <div style="max-width:360px">
+        <a class="brand" href="index.html"><svg width="27" height="31" viewBox="0 0 24 26" fill="none" aria-hidden="true"><path d="M12 1 2.5 4.6v7.1c0 6.2 4 11.6 9.5 13.3 5.5-1.7 9.5-7.1 9.5-13.3V4.6L12 1Z" fill="rgba(225,29,46,.16)" stroke="#e11d2e" stroke-width="1.6"/><path d="M7.5 12.4l3.1 3.2 6-6.4" stroke="#ff4d5a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Sec<b>Audit</b>AD</a>
+        <p class="small" style="margin-top:10px">Suite propietaria de auditoría de seguridad de Active Directory — solo lectura, dictamen binario y score 0-100 con evidencia defendible.</p>
+      </div>
+      <div>
+        <p class="eyebrow" style="margin-bottom:8px">Navegación</p>
+        <p class="small"><a href="index.html">Inicio</a>
+<a href="planes.html">Planes</a>
+<a href="propuesta.html" class="active">Propuesta</a>
+<a href="controles.html">Controles</a>
+<a href="demo.html">Demo</a>
+<a href="informes.html">Informes</a>
+<a href="normativa.html">Normativa</a>
+<a href="nexos.html">Nexos</a></p>
+      </div>
+      <div>
+        <p class="eyebrow" style="margin-bottom:8px">Contacto</p>
+        <p class="small">
+          Alex Alcivar M · Guayaquil, Ecuador<br>
+          <a href="#" data-contact="whatsapp"></a><br>
+          <a href="#" data-contact="email"></a><br>
+          <a href="#" data-contact="linkedin"></a>
+        </p>
+      </div>
+    </div>
+    <div class="legal">
+      © 2026 <b>Alex Alcivar M</b> · Guayaquil, Ecuador · Todos los derechos reservados · Obra propietaria: prohibida su copia, modificación o reutilización (ver licencia en el repositorio SecAuditAD).<br>
+      Valores expresados en <b>dólares estadounidenses (USD)</b> · SecAuditAD v1.0.0 · Los casos de sanciones citan fuentes oficiales; las conversiones a USD son referenciales.
+    </div>
+  </div>
+</footer>
+<div class="overlay" id="overlay" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true">
+    <button class="close" onclick="closeModal()" aria-label="Cerrar">✕</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+(function(){
+  var sel=document.getElementById("selPlan"), inp=document.getElementById("inpClient"), inpD=document.getElementById("inpDate");
+  var q=new URLSearchParams(location.search).get("plan");
+  if(q && DATA.PLANS[q]) sel.value=q;
+  inpD.value=new Date().toISOString().slice(0,10);
+  var addons={};
+  function money(n){return "US$ "+n.toLocaleString("es-EC");}
+  function render(){
+    var p=DATA.PLANS[sel.value];
+    var client=inp.value.trim()||"________________________";
+    var fecha=inpD.value||new Date().toISOString().slice(0,10);
+    var total=p.priceUSD+Object.keys(addons).filter(k=>addons[k]).reduce((a,k)=>a+DATA.ADDONS.find(x=>x.id===k).priceUSD,0);
+    var cron=[];
+    for(var d=1;d<=p.durationDays;d++){
+      var t=d===1?"Ejecución de controles del plan en el dominio (solo lectura) y validación preliminar."
+        :d===2?"Análisis de hallazgos, cruce normativo y elaboración de informes."
+        :"Entrega de informes, taller de remediación con el equipo TI y cierre.";
+      cron.push('<tr><td><b>Día '+d+'</b></td><td>'+t+'</td></tr>');
+    }
+    document.getElementById("doc").innerHTML =
+      '<div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;align-items:baseline">'+
+      '<div><h2 style="font-size:1.5rem">Propuesta de Auditoría de Seguridad — Active Directory</h2>'+
+      '<p class="small">SecAuditAD v1.0.0 · Framework propietario de auditoría solo lectura</p></div>'+
+      '<div class="small" style="text-align:right">Guayaquil, '+fecha+'<br>Propuesta Nº SAD-'+sel.value+'-'+fecha.replace(/-/g,"")+'</div></div><hr style="border-color:var(--line);margin:16px 0">'+
+      '<div class="kv"><b>Preparada para</b><span>'+client+'</span></div>'+
+      '<div class="kv"><b>Auditor responsable</b><span>Alex Alcivar M — Guayaquil, Ecuador</span></div>'+
+      '<div class="kv"><b>Vigencia de la propuesta</b><span>30 días calendario a partir de la fecha indicada</span></div>'+
+      '<h3 style="margin:18px 0 8px">1. Contexto y objetivo</h3>'+
+      '<p class="muted">El Active Directory concentra la identidad administrativa de la organización: quien lo controle, controla sistemas, archivos, correo y datos de clientes. El objetivo de esta auditoría es <b>medir con evidencia técnica</b> la postura de seguridad del dominio y entregar un plan de corrección priorizado, alineado a ISO 27001/NIST/CIS y a la normativa de protección de datos aplicable (LOPDP).</p>'+
+      '<h3 style="margin:18px 0 8px">2. Alcance técnico — '+p.label+'</h3>'+
+      '<p class="muted">'+p.description+'</p>'+
+      '<p style="margin-top:8px"><span class="chip acc">Fases '+p.phases.join(", ")+'</span><span class="chip acc">'+p.controls+' controles</span><span class="chip">'+p.scope+'</span></p>'+
+      '<h3 style="margin:18px 0 8px">3. Metodología</h3>'+
+      '<p class="muted">Ejecución <b>100% solo lectura</b> (sin agentes ni modificaciones), cada control aislado en subproceso con timeout, dictamen binario por control con evidencia defendible, score 0-100 ponderado y mapeo normativo por control. Un control que no puede evaluarse de forma fiable nunca dictamina conforme.</p>'+
+      '<h3 style="margin:18px 0 8px">4. Entregables</h3><ul class="muted" style="margin-left:20px">'+
+      p.deliverables.map(d=>'<li style="margin:4px 0">'+d+'</li>').join("")+'</ul>'+
+      '<h3 style="margin:18px 0 8px">5. Cronograma</h3>'+
+      '<div class="tablebox"><table><thead><tr><th>Momento</th><th>Actividad</th></tr></thead><tbody>'+cron.join("")+'</tbody></table></div>'+
+      '<h3 style="margin:18px 0 8px">6. Inversión</h3>'+
+      '<div class="tablebox"><table><thead><tr><th>Concepto</th><th style="text-align:right">Valor (USD)</th></tr></thead><tbody>'+
+      '<tr><td>'+p.label+' ('+p.controls+' controles · fases '+p.phases.join(", ")+')</td><td style="text-align:right" class="num">'+money(p.priceUSD)+'</td></tr>'+
+      DATA.ADDONS.map(a=>'<tr><td style="opacity:.85"><label style="display:flex;gap:8px;align-items:center;cursor:pointer"><input type="checkbox" data-addon="'+a.id+'" '+(addons[a.id]?"checked":"")+'> Complemento: '+a.label+'</label></td><td style="text-align:right" class="num">'+money(a.priceUSD)+'</td></tr>').join("")+
+      '<tr><td><b>Total</b></td><td style="text-align:right"><b class="num" style="color:var(--acc2);font-size:1.15rem">'+money(total)+'</b></td></tr>'+
+      '</tbody></table></div>'+
+      '<p class="small" style="margin-top:8px">Forma de pago referencial: 50% a la aprobación y 50% a la entrega de informes. Valores en dólares (USD), moneda oficial de Ecuador.</p>'+
+      '<h3 style="margin:18px 0 8px">7. Condiciones</h3>'+
+      '<ul class="muted small" style="margin-left:20px;line-height:1.9">'+
+      '<li>La auditoría no modifica el entorno y no certifica ISO/NIST/CIS ni emite dictamen legal; aporta evidencia técnica parcial hacia esos marcos.</li>'+
+      '<li>Se requiere una sesión en un controlador de dominio o estación de gestión con RSAT y permisos de lectura.</li>'+
+      '<li>La evidencia generada es propiedad de la organización auditada y se maneja bajo confidencialidad.</li>'+
+      '</ul><p style="margin-top:26px" class="small">Atentamente,<br><br><b style="font-size:1.05rem">Alex Alcivar M</b><br>Auditor de Seguridad — Active Directory<br>Guayaquil, Ecuador</p>';
+    document.querySelectorAll("[data-addon]").forEach(cb=>cb.addEventListener("change",function(){
+      addons[this.getAttribute("data-addon")]=this.checked; render();
+    }));
+  }
+  [sel,inp,inpD].forEach(el=>el.addEventListener("change",render));
+  inp.addEventListener("input",render);
+  document.getElementById("btnPrint").addEventListener("click",function(){window.print();});
+  render();
+})();
+</script>
+</body>
+</html>

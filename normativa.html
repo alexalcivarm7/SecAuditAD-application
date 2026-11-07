@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mapeo normativo — SecAuditAD Application</title>
+<meta name="description" content="Cobertura del catálogo de controles frente a ISO 27001, NIST, CIS, CSF 2.0 y protección de datos LATAM.">
+<meta name="author" content="Alex Alcivar M">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="index.html"><svg width="27" height="31" viewBox="0 0 24 26" fill="none" aria-hidden="true"><path d="M12 1 2.5 4.6v7.1c0 6.2 4 11.6 9.5 13.3 5.5-1.7 9.5-7.1 9.5-13.3V4.6L12 1Z" fill="rgba(225,29,46,.16)" stroke="#e11d2e" stroke-width="1.6"/><path d="M7.5 12.4l3.1 3.2 6-6.4" stroke="#ff4d5a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Sec<b>Audit</b>AD <span class="app">Application</span></a>
+    <nav class="main"><a href="index.html">Inicio</a>
+<a href="planes.html">Planes</a>
+<a href="propuesta.html">Propuesta</a>
+<a href="controles.html">Controles</a>
+<a href="demo.html">Demo</a>
+<a href="informes.html">Informes</a>
+<a href="normativa.html" class="active">Normativa</a>
+<a href="nexos.html">Nexos</a></nav>
+  </div>
+</header>
+<main>
+
+<section class="hero" style="padding-bottom:6px">
+  <div class="wrap">
+    <span class="kicker">Mapeo normativo</span>
+    <h1>Un control, <em>varios marcos</em></h1>
+    <p class="sub">Cada control de SecAuditAD está mapeado a los principales marcos de seguridad y a la normativa de
+    protección de datos. Esta es la cobertura total del catálogo — sin duplicar contenido: el detalle por control está en la <a href="controles.html">matriz de controles</a> y las multas con fuentes oficiales en <a href="nexos.html">Nexos</a>.</p>
+  </div>
+</section>
+
+<section class="block" style="padding-top:14px">
+  <div class="wrap">
+    <div class="grid g3" id="fwCards"></div>
+    <h3 style="margin:26px 0 10px">Cobertura del catálogo por marco</h3>
+    <div class="card" id="fwBars"></div>
+    <div class="note" style="margin-top:18px;background:linear-gradient(90deg,rgba(225,29,46,.08),transparent);border:1px solid rgba(225,29,46,.28);border-left:3px solid var(--acc);border-radius:0 12px 12px 0;padding:13px 16px;font-size:.88rem;color:var(--tx2)">
+      <b>Nota metodológica:</b> la evidencia de SecAuditAD es técnica y parcial (cadena <span class="chip mono">evidencia → condición → conclusión → control normativo</span>). No constituye certificación ISO/NIST/CIS ni dictamen legal de cumplimiento.
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="site">
+  <div class="wrap">
+    <div class="cols">
+      <div style="max-width:360px">
+        <a class="brand" href="index.html"><svg width="27" height="31" viewBox="0 0 24 26" fill="none" aria-hidden="true"><path d="M12 1 2.5 4.6v7.1c0 6.2 4 11.6 9.5 13.3 5.5-1.7 9.5-7.1 9.5-13.3V4.6L12 1Z" fill="rgba(225,29,46,.16)" stroke="#e11d2e" stroke-width="1.6"/><path d="M7.5 12.4l3.1 3.2 6-6.4" stroke="#ff4d5a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Sec<b>Audit</b>AD</a>
+        <p class="small" style="margin-top:10px">Suite propietaria de auditoría de seguridad de Active Directory — solo lectura, dictamen binario y score 0-100 con evidencia defendible.</p>
+      </div>
+      <div>
+        <p class="eyebrow" style="margin-bottom:8px">Navegación</p>
+        <p class="small"><a href="index.html">Inicio</a>
+<a href="planes.html">Planes</a>
+<a href="propuesta.html">Propuesta</a>
+<a href="controles.html">Controles</a>
+<a href="demo.html">Demo</a>
+<a href="informes.html">Informes</a>
+<a href="normativa.html" class="active">Normativa</a>
+<a href="nexos.html">Nexos</a></p>
+      </div>
+      <div>
+        <p class="eyebrow" style="margin-bottom:8px">Contacto</p>
+        <p class="small">
+          Alex Alcivar M · Guayaquil, Ecuador<br>
+          <a href="#" data-contact="whatsapp"></a><br>
+          <a href="#" data-contact="email"></a><br>
+          <a href="#" data-contact="linkedin"></a>
+        </p>
+      </div>
+    </div>
+    <div class="legal">
+      © 2026 <b>Alex Alcivar M</b> · Guayaquil, Ecuador · Todos los derechos reservados · Obra propietaria: prohibida su copia, modificación o reutilización (ver licencia en el repositorio SecAuditAD).<br>
+      Valores expresados en <b>dólares estadounidenses (USD)</b> · SecAuditAD v1.0.0 · Los casos de sanciones citan fuentes oficiales; las conversiones a USD son referenciales.
+    </div>
+  </div>
+</footer>
+<div class="overlay" id="overlay" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true">
+    <button class="close" onclick="closeModal()" aria-label="Cerrar">✕</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+(function(){
+  var total=DATA.CONTROLS.length;
+  var keys=Object.keys(DATA.FRAMEWORKS);
+  document.getElementById("fwCards").innerHTML=keys.map(function(k){
+    var f=DATA.FRAMEWORKS[k];
+    var n=DATA.CONTROLS.filter(c=>c.normative&&c.normative[k]&&c.normative[k].length).length;
+    return '<div class="card reveal in"><h3>'+f.label+'</h3><p>'+f.desc+'</p>'+
+      '<p style="margin-top:10px"><span class="chip acc">'+n+' de '+total+' controles mapeados</span></p>'+
+      '<a class="small" href="controles.html" style="display:inline-block;margin-top:8px">Ver en la matriz →</a></div>';
+  }).join("");
+  document.getElementById("fwBars").innerHTML=keys.map(function(k){
+    var f=DATA.FRAMEWORKS[k];
+    var n=DATA.CONTROLS.filter(c=>c.normative&&c.normative[k]&&c.normative[k].length).length;
+    var pct=Math.round(n/total*100);
+    return '<div class="hbar"><div class="lbl"><b>'+f.label+'</b><span class="num">'+n+'/'+total+' · '+pct+'%</span></div><div class="tr"><i data-w="'+pct+'"></i></div></div>';
+  }).join("");
+  setTimeout(()=>document.querySelectorAll("#fwBars i").forEach(i=>i.style.width=i.getAttribute("data-w")+"%"),150);
+})();
+</script>
+</body>
+</html>

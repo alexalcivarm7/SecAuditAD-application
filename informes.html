@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Informes de ejemplo — SecAuditAD Application</title>
+<meta name="description" content="Informes técnico y ejecutivo interactivos de ejemplo (datos sintéticos) que genera SecAuditAD en cada corrida.">
+<meta name="author" content="Alex Alcivar M">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="index.html"><svg width="27" height="31" viewBox="0 0 24 26" fill="none" aria-hidden="true"><path d="M12 1 2.5 4.6v7.1c0 6.2 4 11.6 9.5 13.3 5.5-1.7 9.5-7.1 9.5-13.3V4.6L12 1Z" fill="rgba(225,29,46,.16)" stroke="#e11d2e" stroke-width="1.6"/><path d="M7.5 12.4l3.1 3.2 6-6.4" stroke="#ff4d5a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Sec<b>Audit</b>AD <span class="app">Application</span></a>
+    <nav class="main"><a href="index.html">Inicio</a>
+<a href="planes.html">Planes</a>
+<a href="propuesta.html">Propuesta</a>
+<a href="controles.html">Controles</a>
+<a href="demo.html">Demo</a>
+<a href="informes.html" class="active">Informes</a>
+<a href="normativa.html">Normativa</a>
+<a href="nexos.html">Nexos</a></nav>
+  </div>
+</header>
+<main>
+
+<section class="hero" style="padding-bottom:6px">
+  <div class="wrap">
+    <span class="kicker">Entregables · Informes de ejemplo</span>
+    <h1>Así se ven los <em>informes</em> que recibes</h1>
+    <p class="lead">Cada corrida genera dos informes HTML interactivos (imprimibles a PDF). Estos son ejemplos con
+    datos sintéticos del dominio de demostración — en tu auditoría, con la evidencia real de tu dominio.</p>
+  </div>
+</section>
+
+<section class="block" style="padding-top:14px">
+  <div class="wrap">
+    <div class="grid g2">
+      <div class="card reveal">
+        <span class="icon">🛠️</span>
+        <h3>Informe Técnico</h3>
+        <p>Para el equipo de TI y el auditor. Todo el detalle, navegable y filtrable.</p>
+        <ul class="muted" style="margin:12px 0 16px 20px;font-size:.88rem">
+          <li>Score global y por fase con dona animada</li>
+          <li>Matriz de controles con búsqueda y filtros (fase, dictamen, severidad)</li>
+          <li>Detalle expandible por control: hallazgos enmascarados, remediación, mapeo normativo</li>
+          <li>Técnicas MITRE ATT&CK con enlaces oficiales</li>
+          <li>Exportación JSON de la corrida</li>
+        </ul>
+        <a class="btn" href="informes/informe-tecnico.html">Abrir informe técnico demo</a>
+      </div>
+      <div class="card reveal">
+        <span class="icon">📊</span>
+        <h3>Informe Ejecutivo</h3>
+        <p>Para gerencia: riesgo de negocio, multas en USD y plan de acción.</p>
+        <ul class="muted" style="margin:12px 0 16px 20px;font-size:.88rem">
+          <li>«¿Qué significa este score?» en lenguaje de negocio</li>
+          <li>Impacto en continuidad, fuga de datos, multas y reputación</li>
+          <li>Exposición sancionatoria en USD con fuentes oficiales</li>
+          <li>Riesgos prioritarios expandibles con impacto explicado</li>
+          <li>Plan de remediación marcable (quick wins vs proyectos)</li>
+        </ul>
+        <a class="btn" href="informes/informe-ejecutivo.html">Abrir informe ejecutivo demo</a>
+      </div>
+    </div>
+    <div class="note reveal" style="background:linear-gradient(90deg,rgba(225,29,46,.08),transparent);border:1px solid rgba(225,29,46,.28);border-left:3px solid var(--acc);border-radius:0 12px 12px 0;padding:13px 16px;font-size:.88rem;color:var(--tx2);margin-top:18px">
+      <b>Nota:</b> los informes demo usan el dominio sintético <span class="chip mono">corpdemo.local</span> con un score de 47/100 a propósito — así se ve un entorno con riesgo. Los informes reales se generan automáticamente en cada corrida con los controles del plan contratado.
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="site">
+  <div class="wrap">
+    <div class="cols">
+      <div style="max-width:360px">
+        <a class="brand" href="index.html"><svg width="27" height="31" viewBox="0 0 24 26" fill="none" aria-hidden="true"><path d="M12 1 2.5 4.6v7.1c0 6.2 4 11.6 9.5 13.3 5.5-1.7 9.5-7.1 9.5-13.3V4.6L12 1Z" fill="rgba(225,29,46,.16)" stroke="#e11d2e" stroke-width="1.6"/><path d="M7.5 12.4l3.1 3.2 6-6.4" stroke="#ff4d5a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Sec<b>Audit</b>AD</a>
+        <p class="small" style="margin-top:10px">Suite propietaria de auditoría de seguridad de Active Directory — solo lectura, dictamen binario y score 0-100 con evidencia defendible.</p>
+      </div>
+      <div>
+        <p class="eyebrow" style="margin-bottom:8px">Navegación</p>
+        <p class="small"><a href="index.html">Inicio</a>
+<a href="planes.html">Planes</a>
+<a href="propuesta.html">Propuesta</a>
+<a href="controles.html">Controles</a>
+<a href="demo.html">Demo</a>
+<a href="informes.html" class="active">Informes</a>
+<a href="normativa.html">Normativa</a>
+<a href="nexos.html">Nexos</a></p>
+      </div>
+      <div>
+        <p class="eyebrow" style="margin-bottom:8px">Contacto</p>
+        <p class="small">
+          Alex Alcivar M · Guayaquil, Ecuador<br>
+          <a href="#" data-contact="whatsapp"></a><br>
+          <a href="#" data-contact="email"></a><br>
+          <a href="#" data-contact="linkedin"></a>
+        </p>
+      </div>
+    </div>
+    <div class="legal">
+      © 2026 <b>Alex Alcivar M</b> · Guayaquil, Ecuador · Todos los derechos reservados · Obra propietaria: prohibida su copia, modificación o reutilización (ver licencia en el repositorio SecAuditAD).<br>
+      Valores expresados en <b>dólares estadounidenses (USD)</b> · SecAuditAD v1.0.0 · Los casos de sanciones citan fuentes oficiales; las conversiones a USD son referenciales.
+    </div>
+  </div>
+</footer>
+<div class="overlay" id="overlay" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true">
+    <button class="close" onclick="closeModal()" aria-label="Cerrar">✕</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>

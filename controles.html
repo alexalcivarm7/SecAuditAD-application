@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Matriz de 54 controles por fase — SecAuditAD Application</title>
+<meta name="description" content="Catálogo de 54 controles de auditoría de Active Directory segmentado por fases, con MITRE y mapeo normativo.">
+<meta name="author" content="Alex Alcivar M">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="index.html"><svg width="27" height="31" viewBox="0 0 24 26" fill="none" aria-hidden="true"><path d="M12 1 2.5 4.6v7.1c0 6.2 4 11.6 9.5 13.3 5.5-1.7 9.5-7.1 9.5-13.3V4.6L12 1Z" fill="rgba(225,29,46,.16)" stroke="#e11d2e" stroke-width="1.6"/><path d="M7.5 12.4l3.1 3.2 6-6.4" stroke="#ff4d5a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Sec<b>Audit</b>AD <span class="app">Application</span></a>
+    <nav class="main"><a href="index.html">Inicio</a>
+<a href="planes.html">Planes</a>
+<a href="propuesta.html">Propuesta</a>
+<a href="controles.html" class="active">Controles</a>
+<a href="demo.html">Demo</a>
+<a href="informes.html">Informes</a>
+<a href="normativa.html">Normativa</a>
+<a href="nexos.html">Nexos</a></nav>
+  </div>
+</header>
+<main>
+
+<section class="hero" style="padding-bottom:6px">
+  <div class="wrap">
+    <span class="kicker">Catálogo · 54 controles reales</span>
+    <h1>Matriz de <em>controles</em>, segmentada por fases</h1>
+    <p class="lead">Este es el catálogo completo que ejecuta el motor: haz clic en cualquier control para ver su
+    vector de ataque, peso, técnica MITRE y mapeo normativo.</p>
+  </div>
+</section>
+
+<section class="block" style="padding-top:14px">
+  <div class="wrap">
+    <div class="toolbar">
+      <input id="fq" type="search" placeholder="Buscar control, vector de ataque o MITRE…">
+      <select id="fplan"><option value="">Todos los planes</option><option value="JR">Jr (27)</option><option value="SENIOR">Senior (50)</option><option value="PREMIUM">Premium (54)</option></select>
+      <select id="fphase"><option value="">Todas las fases</option></select>
+      <span class="count small" id="count"></span>
+    </div>
+    <div id="sections"></div>
+  </div>
+</section>
+
+</main>
+<footer class="site">
+  <div class="wrap">
+    <div class="cols">
+      <div style="max-width:360px">
+        <a class="brand" href="index.html"><svg width="27" height="31" viewBox="0 0 24 26" fill="none" aria-hidden="true"><path d="M12 1 2.5 4.6v7.1c0 6.2 4 11.6 9.5 13.3 5.5-1.7 9.5-7.1 9.5-13.3V4.6L12 1Z" fill="rgba(225,29,46,.16)" stroke="#e11d2e" stroke-width="1.6"/><path d="M7.5 12.4l3.1 3.2 6-6.4" stroke="#ff4d5a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Sec<b>Audit</b>AD</a>
+        <p class="small" style="margin-top:10px">Suite propietaria de auditoría de seguridad de Active Directory — solo lectura, dictamen binario y score 0-100 con evidencia defendible.</p>
+      </div>
+      <div>
+        <p class="eyebrow" style="margin-bottom:8px">Navegación</p>
+        <p class="small"><a href="index.html">Inicio</a>
+<a href="planes.html">Planes</a>
+<a href="propuesta.html">Propuesta</a>
+<a href="controles.html" class="active">Controles</a>
+<a href="demo.html">Demo</a>
+<a href="informes.html">Informes</a>
+<a href="normativa.html">Normativa</a>
+<a href="nexos.html">Nexos</a></p>
+      </div>
+      <div>
+        <p class="eyebrow" style="margin-bottom:8px">Contacto</p>
+        <p class="small">
+          Alex Alcivar M · Guayaquil, Ecuador<br>
+          <a href="#" data-contact="whatsapp"></a><br>
+          <a href="#" data-contact="email"></a><br>
+          <a href="#" data-contact="linkedin"></a>
+        </p>
+      </div>
+    </div>
+    <div class="legal">
+      © 2026 <b>Alex Alcivar M</b> · Guayaquil, Ecuador · Todos los derechos reservados · Obra propietaria: prohibida su copia, modificación o reutilización (ver licencia en el repositorio SecAuditAD).<br>
+      Valores expresados en <b>dólares estadounidenses (USD)</b> · SecAuditAD v1.0.0 · Los casos de sanciones citan fuentes oficiales; las conversiones a USD son referenciales.
+    </div>
+  </div>
+</footer>
+<div class="overlay" id="overlay" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true">
+    <button class="close" onclick="closeModal()" aria-label="Cerrar">✕</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+(function(){
+  var esc=function(s){return (s==null?"":String(s)).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));};
+  var state={q:"",plan:"",phase:""};
+  var phSel=document.getElementById("fphase");
+  Object.keys(DATA.PHASES).map(k=>DATA.PHASES[k]).filter(p=>DATA.CONTROLS.some(c=>c.phase===p.id)).sort((a,b)=>a.id-b.id)
+    .forEach(p=>{var o=document.createElement("option");o.value=p.id;o.textContent="Fase "+p.id+" — "+p.name;phSel.appendChild(o);});
+
+  function allowed(){
+    var phases=null;
+    if(state.plan){phases=DATA.PLANS[state.plan].phases;}
+    return phases;
+  }
+  function matches(c){
+    if(allowed() && allowed().indexOf(c.phase)===-1) return false;
+    if(state.phase && String(c.phase)!==state.phase) return false;
+    if(state.q){
+      var q=state.q.toLowerCase();
+      if(!((c.id+" "+c.name+" "+c.attackVector+" "+(c.mitre||[]).join(" ")).toLowerCase().includes(q))) return false;
+    }
+    return true;
+  }
+  function card(c){
+    return '<button class="ctrl" data-id="'+c.id+'">'+
+      '<span class="id">'+esc(c.id)+' · peso '+c.weight+'</span><b>'+esc(c.name)+'</b>'+
+      '<span class="vec">'+esc(c.attackVector||"")+'</span>'+
+      '<span class="foot"><span class="chip">'+(DATA.PHASES[c.phase]?DATA.PHASES[c.phase].name:"Fase "+c.phase)+'</span>'+
+      (c.severityBase?'<span class="chip '+(c.severityBase==="CRITICAL"?"bad":(c.severityBase==="HIGH"?"warn":""))+'">'+c.severityBase+'</span>':"")+'</span></button>';
+  }
+  function render(){
+    var phs=Object.keys(DATA.PHASES).map(k=>DATA.PHASES[k]).filter(p=>DATA.CONTROLS.some(c=>c.phase===p.id)).sort((a,b)=>a.id-b.id);
+    var html="",total=0;
+    phs.forEach(function(p){
+      var cs=DATA.CONTROLS.filter(c=>c.phase===p.id&&matches(c));
+      if(!cs.length) return;
+      total+=cs.length;
+      var w=cs.reduce((a,c)=>a+c.weight,0);
+      html+='<div style="margin:26px 0 12px"><h3 style="font-size:1.1rem"><span style="color:var(--acc2)">Fase '+p.id+'</span> — '+p.name+
+        ' <span class="small">· '+cs.length+' controles · '+w+' pts</span></h3>'+
+        '<div class="ctrlgrid">'+cs.map(card).join("")+'</div></div>';
+    });
+    document.getElementById("sections").innerHTML = html || '<p class="muted">Ningún control coincide con los filtros.</p>';
+    document.getElementById("count").textContent = total+" de "+DATA.CONTROLS.length+" controles";
+    document.querySelectorAll(".ctrl").forEach(b=>b.addEventListener("click",function(){openDetail(this.getAttribute("data-id"));}));
+  }
+  function openDetail(id){
+    var c=DATA.CONTROLS.find(x=>x.id===id); if(!c) return;
+    var mitre=(c.mitre||[]).map(function(t){
+      var m=/^(T\d{4})(?:\.(\d{3}))?$/.exec(t);
+      return m?'<a class="chip mono" href="https://attack.mitre.org/techniques/'+m[1]+'/'+(m[2]?m[2]+'/':'')+'" target="_blank" rel="noopener">'+esc(t)+'</a>':'<span class="chip mono">'+esc(t)+'</span>';
+    }).join(" ");
+    var norm="";
+    Object.keys(c.normative||{}).forEach(function(fw){
+      var meta=DATA.FRAMEWORKS[fw]||{label:fw};
+      norm+='<div class="kv"><b>'+meta.label+'</b><ul>'+c.normative[fw].map(x=>'<li>'+esc(x)+'</li>').join("")+'</ul></div>';
+    });
+    openModal('<h3>'+esc(c.name)+'</h3><p class="small" style="color:var(--acc2);font-family:JetBrains Mono,monospace">'+esc(c.id)+'</p>'+
+      '<div class="kv"><b>Fase</b><span>Fase '+c.phase+' — '+(DATA.PHASES[c.phase]?DATA.PHASES[c.phase].name:"")+'</span></div>'+
+      '<div class="kv"><b>Vector de ataque</b><span class="muted">'+esc(c.attackVector||"—")+'</span></div>'+
+      '<div class="kv"><b>Parámetros</b><span>Peso '+c.weight+' · Severidad base '+esc(c.severityBase||"—")+' · Alcance '+esc(c.scope||"—")+'</span></div>'+
+      '<div class="kv"><b>MITRE ATT&CK</b>'+(mitre||"—")+'</div>'+norm);
+  }
+  ["fq","fplan","fphase"].forEach(function(id){
+    var el=document.getElementById(id);
+    el.addEventListener("input",function(){state={q:document.getElementById("fq").value,plan:document.getElementById("fplan").value,phase:document.getElementById("fphase").value};render();});
+  });
+  if(new URLSearchParams(location.search).get("plan")){
+    document.getElementById("fplan").value=new URLSearchParams(location.search).get("plan");
+    state.plan=document.getElementById("fplan").value;
+  }
+  render();
+})();
+</script>
+</body>
+</html>

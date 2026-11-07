@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>SecAuditAD — Informe Ejecutivo (demo) — corpdemo.local</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>:root{--bg:#0a0a0d;--bg2:#101015;--card:#141419;--card2:#1a1a21;--line:#27272f;--line2:#32323c;
+--tx:#f2f2f4;--tx2:#a8a8b3;--tx3:#70707c;--acc:#e11d2e;--acc2:#ff4d5a;
+--ok:#22c55e;--warn:#eab308;--bad:#ef4444;--orange:#f97316;--radius:14px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--tx);font-family:Inter,"Segoe UI",system-ui,-apple-system,Roboto,sans-serif;font-size:15px;line-height:1.65}
+h1,h2,h3{font-family:Sora,"Segoe UI",system-ui,sans-serif;letter-spacing:-.3px}
+a{color:var(--acc2);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+.topbar{position:sticky;top:0;z-index:60;background:rgba(10,10,13,.93);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:13px;height:62px}
+.brand{display:flex;align-items:center;gap:10px;font-family:Sora,sans-serif;font-weight:800;font-size:1.14rem;letter-spacing:.4px}
+.brand b{color:var(--acc2)}
+.vbadge{font-size:.7rem;font-weight:700;color:var(--acc2);background:rgba(225,29,46,.12);border:1px solid rgba(225,29,46,.4);border-radius:999px;padding:2px 10px}
+.spacer{flex:1}
+.report-type{font-size:.72rem;color:var(--tx3);border:1px solid var(--line);border-radius:999px;padding:3px 10px;letter-spacing:1.5px;text-transform:uppercase}
+.btn{display:inline-flex;align-items:center;gap:7px;background:linear-gradient(135deg,var(--acc),#b3121f);color:#fff;font:inherit;font-size:.86rem;font-weight:700;border:0;border-radius:10px;padding:9px 16px;cursor:pointer;transition:transform .12s,box-shadow .12s}
+.btn:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(225,29,46,.35)}
+.btn.ghost{background:transparent;color:var(--tx2);border:1px solid var(--line2)}
+.btn.ghost:hover{color:var(--tx);border-color:var(--acc);box-shadow:none}
+.hero{padding:38px 0 8px}
+.hero h1{font-size:1.85rem;line-height:1.22}
+.hero .meta{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:14px;color:var(--tx2);font-size:.9rem}
+.hero .meta b{color:var(--tx)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:26px 0 6px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:15px 16px;position:relative;overflow:hidden}
+.kpi::before{content:"";position:absolute;inset:0 auto 0 0;width:3px;background:var(--acc)}
+.kpi b{display:block;font-size:1.6rem;font-family:Sora,sans-serif}
+.kpi span{font-size:.74rem;color:var(--tx2);text-transform:uppercase;letter-spacing:.8px}
+.kpi.red b{color:var(--acc2)}.kpi.green b{color:var(--ok)}.kpi.warn b{color:var(--warn)}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;margin:14px 0}
+.grid2{display:grid;grid-template-columns:minmax(230px,300px) 1fr;gap:22px;align-items:center}
+@media(max-width:800px){.grid2{grid-template-columns:1fr}}
+.donutwrap{position:relative;width:200px;margin:0 auto}
+.donutwrap svg{display:block;transform:rotate(-90deg)}
+.donutnum{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.donutnum b{font-size:2.5rem;font-family:Sora,sans-serif}
+.donutnum span{font-size:.66rem;color:var(--tx3);letter-spacing:1.2px;text-transform:uppercase}
+.band{display:inline-block;font-family:Sora,sans-serif;font-weight:800;font-size:1.05rem;padding:5px 14px;border-radius:9px;margin:4px 0 10px}
+.band.red{background:rgba(239,68,68,.14);color:#fca5a5;border:1px solid rgba(239,68,68,.4)}
+.band.orange{background:rgba(249,115,22,.14);color:#fdba74;border:1px solid rgba(249,115,22,.4)}
+.band.yellow{background:rgba(234,179,8,.14);color:#fde047;border:1px solid rgba(234,179,8,.4)}
+.band.green{background:rgba(34,197,94,.14);color:#86efac;border:1px solid rgba(34,197,94,.4)}
+section{padding:26px 0 8px}
+section>h2{font-size:1.28rem;margin-bottom:4px}
+section>.secsub{color:var(--tx2);font-size:.92rem;margin-bottom:14px}
+.grid{display:grid;gap:13px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+.dim{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:17px 18px}
+.dim .ic{font-size:1.5rem}.dim .t{font-weight:700;font-family:Sora,sans-serif;margin:5px 0 4px}
+.dim p{color:var(--tx2);font-size:.85rem}
+.dim .ids{font-size:.76rem;color:var(--acc2);font-family:"JetBrains Mono",Consolas,monospace;margin-top:7px;line-height:1.7}
+.dim.ok .ids{color:var(--ok)}
+.badge{display:inline-block;padding:2px 10px;border-radius:999px;font-size:.66rem;font-weight:700;letter-spacing:.4px;white-space:nowrap}
+.sv-CRITICAL{background:rgba(185,28,28,.35);color:#fecaca}
+.sv-HIGH{background:rgba(154,52,18,.35);color:#ffedd5}
+.tag{display:inline-block;font-size:.7rem;color:var(--tx2);background:var(--bg2);border:1px solid var(--line2);padding:2px 9px;border-radius:6px}
+.tag.g{color:#86efac;border-color:rgba(34,197,94,.4)}
+.tag.o{color:#fdba74;border-color:rgba(249,115,22,.4)}
+.chip{display:inline-block;font-size:.72rem;color:var(--tx2);background:var(--bg2);border:1px solid var(--line2);border-radius:999px;padding:2px 9px;margin:2px 4px 2px 0}
+.chip.mono{font-family:"JetBrains Mono",Consolas,monospace;font-size:.7rem}
+.risk{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);margin-bottom:10px;overflow:hidden}
+.risk .head{display:flex;gap:12px;align-items:flex-start;padding:14px 17px;cursor:pointer}
+.risk .head:hover{background:var(--card2)}
+.risk .head b{font-family:Sora,sans-serif;font-size:.95rem}
+.risk .head .sub{font-size:.78rem;color:var(--tx3);margin-top:2px}
+.risk .head .right{margin-left:auto;text-align:right;flex:0 0 auto}
+.risk .body{display:none;padding:0 17px 16px;color:var(--tx2);font-size:.88rem;animation:fade .25s ease}
+.risk.open .body{display:block}
+.risk .chev{color:var(--tx3);transition:transform .18s;flex:0 0 auto;margin-top:3px}
+.risk.open .chev{transform:rotate(90deg);color:var(--acc2)}
+.risk .body .row{margin:8px 0}
+.risk .body .row b{color:var(--tx)}
+@keyframes fade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.planlist{list-style:none}
+.planlist li{display:flex;gap:11px;align-items:flex-start;padding:10px 12px;border:1px solid var(--line);border-radius:11px;background:var(--bg2);margin-bottom:8px;font-size:.88rem}
+.planlist input{margin-top:4px;accent-color:var(--acc);width:16px;height:16px;flex:0 0 auto}
+.planlist li.done{opacity:.45;text-decoration:line-through}
+.num{font-variant-numeric:tabular-nums}
+.muted{color:var(--tx2)}.small{font-size:.8rem;color:var(--tx3)}
+.note{background:linear-gradient(90deg,rgba(225,29,46,.08),transparent);border:1px solid rgba(225,29,46,.28);border-left:3px solid var(--acc);border-radius:0 12px 12px 0;padding:13px 16px;font-size:.86rem;color:var(--tx2);margin:16px 0}
+.src{font-size:.72rem;color:var(--tx3)}
+.src a{color:var(--tx2)}
+table{width:100%;border-collapse:collapse;font-size:.85rem}
+th{text-align:left;color:var(--tx3);font-weight:600;font-size:.68rem;text-transform:uppercase;letter-spacing:.7px;padding:9px 10px;border-bottom:1px solid var(--line)}
+td{padding:9px 10px;border-bottom:1px solid #1e1e26;vertical-align:top}
+.tablebox{border:1px solid var(--line);border-radius:var(--radius);background:var(--card);overflow:hidden}
+.scroll{overflow-x:auto}
+ol.steps{margin:8px 0 0 20px}
+ol.steps li{margin:10px 0;color:var(--tx2)}
+ol.steps li b{color:var(--tx)}
+footer{border-top:1px solid var(--line);margin-top:34px;padding:24px 0 44px;color:var(--tx3);font-size:.8rem;line-height:1.8}
+footer b{color:var(--tx2)}
+@media print{body{background:#fff;color:#111}.topbar,.btn,.toolbar{display:none}.risk .body{display:block}.panel,.kpi,.dim,.risk,.tablebox{background:#fff;border-color:#ddd}.donutnum b,.kpi b,.risk .head b{color:#111}.planlist li{border-color:#ddd}.note{background:#fff;border-color:#bbb}}</style></head><body>
+<header class="topbar"><div class="wrap"><a class="brand" href="../index.html" style="text-decoration:none"><svg width="26" height="30" viewBox="0 0 24 26" fill="none"><path d="M12 1 2.5 4.6v7.1c0 6.2 4 11.6 9.5 13.3 5.5-1.7 9.5-7.1 9.5-13.3V4.6L12 1Z" fill="rgba(225,29,46,.16)" stroke="#e11d2e" stroke-width="1.6"/><path d="M7.5 12.4l3.1 3.2 6-6.4" stroke="#ff4d5a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Sec<b>Audit</b>AD</a><span class="vbadge">v1.0.0 · demo</span><span class="spacer"></span><span class="report-type">Informe ejecutivo</span><a class="btn ghost" href="../informes.html">← Volver</a><button class="btn ghost" id="btnPrint">Imprimir / PDF</button></div></header>
+<div class="wrap"><div class="hero">
+<h1>Seguridad del Directorio Activo —<br>Resumen para la Alta Gerencia</h1>
+<div class="meta">
+<span>Organización: <b>corpdemo.local</b></span>
+<span>Dominio: <b>corpdemo.local</b></span>
+<span>Fecha: <b>2026-11-07 14:30</b></span>
+<span>Auditor responsable: <b>Alex Alcivar M</b></span>
+<span>Plan: <b>Auditoría Premium (demo)</b></span>
+</div>
+<div class="kpis">
+<div class="kpi"><b data-count="54">0</b><span>Controles auditados</span></div>
+<div class="kpi green"><b data-count="28">0</b><span>Áreas protegidas</span></div>
+<div class="kpi red"><b data-count="24">0</b><span>Brechas detectadas</span></div>
+<div class="kpi red"><b data-count="4">0</b><span>Hallazgos críticos</span></div>
+<div class="kpi warn"><b data-count="16">0</b><span>Hallazgos altos</span></div>
+</div></div>
+
+<div class="panel"><div class="grid2">
+<div class="donutwrap">
+<svg width="200" height="200" viewBox="0 0 200 200" id="donut"></svg>
+<div class="donutnum"><b id="donutNum">0</b><span>Score de seguridad</span></div>
+</div>
+<div>
+<span class="band" id="band">—</span>
+<p class="muted">El Active Directory es el <b>"anillo maestro de llaves"</b> de la organización: controla quién entra a los sistemas, archivos, correo y datos de clientes. Este puntaje resume, en una sola cifra auditable, qué tan protegida está esa llave, medido con 54 controles técnicos de solo lectura (sin agentes ni cambios en la infraestructura).</p>
+<div id="phaseBars" style="margin-top:10px"></div>
+</div>
+</div></div>
+
+<section><h2>1. ¿Qué significa este resultado?</h2>
+<p>El directorio activo presenta un riesgo crítico: las brechas identificadas son compatibles con un compromiso total de la red (robo de identidades administrativas, cifrado por ransomware o exfiltración de datos personales). Se recomienda tratarlo como incidente de gestión de riesgo inmediato.</p></section>
+
+<section><h2>2. Impacto en el negocio</h2>
+<p class="secsub">Cada control fallido no es un problema "de TI": es una puerta abierta con consecuencias operativas, legales y comerciales.</p>
+<div class="grid g2">
+<div class="dim"><div class="ic">🏭</div><div class="t">Continuidad del negocio</div><p>Una identidad administrativa comprometida permite a un atacante bloquear la operación (ransomware) o sabotear servidores.</p><div class="ids">SecAuditAD-002 · SecAuditAD-003 · SecAuditAD-004 · SecAuditAD-022 · SecAuditAD-036</div></div>
+<div class="dim"><div class="ic">🔓</div><div class="t">Fuga de información</div><p>Credenciales expuestas o replicación no controlada permiten extraer bases de datos de clientes, personal y finanzas.</p><div class="ids">SecAuditAD-002 · SecAuditAD-007 · SecAuditAD-012 · SecAuditAD-018 · SecAuditAD-042 · SecAuditAD-035</div></div>
+<div class="dim"><div class="ic">⚖️</div><div class="t">Multas regulatorias (USD)</div><p>Las leyes de protección de datos exigen medidas técnicas de seguridad; su incumplimiento es sancionable con multas en dólares.</p><div class="ids">SecAuditAD-002 · SecAuditAD-012 · SecAuditAD-018 · SecAuditAD-042</div></div>
+<div class="dim"><div class="ic">📰</div><div class="t">Reputación y confianza</div><p>Un incidente de identidad corporativa suele ser público y afecta la confianza de clientes, banca y proveedores.</p><div class="ids">SecAuditAD-001 · SecAuditAD-002 · SecAuditAD-012 · SecAuditAD-018</div></div>
+</div></section>
+
+<section><h2>3. Exposición sancionatoria en dólares (USD)</h2>
+<p class="secsub">Rangos legales vigentes, convertidos a USD (moneda de referencia: Guayaquil, Ecuador). Tasas de cambio de noviembre de 2026: 3.235 COP/USD · 5,49 BRL/USD · 1,11 EUR/USD.</p>
+<div class="tablebox"><div class="scroll"><table>
+<thead><tr><th>Norma / País</th><th>Sanción máxima</th><th>En USD</th><th>Caso real reciente</th></tr></thead><tbody>
+<tr><td><b>LOPDP — Ecuador</b><br/><span class="small">Ley Orgánica de Protección de Datos Personales</span></td>
+<td>Multas de 0,1% a 0,7% del volumen de negocio anual (leves) y de 0,7% a 1% (graves), para entidades privadas. Sector público: 1–20 SBU (SBU 2026 = US$ 482).</td>
+<td><b>Proporcional a la facturación</b></td>
+<td>Primera sanción (dic-2025): <b>LIGAPRO US$ 259.644</b> y <b>FEF US$ 194.856</b> — Superintendencia de Protección de Datos.<br/><span class="src">Fuente: <a href="https://www.spdp.gob.ec/prensa/" target="_blank" rel="noopener">spdp.gob.ec/prensa</a> · Metodología: Res. SPDP-SPD-2025-0022-R · Reglamento: D.E. 904 (2023)</span></td></tr>
+<tr><td><b>Ley 1581 — Colombia</b><br/><span class="small">Decreto 1377/2013, art. 25 · SIC</span></td>
+<td>Multas hasta 2.000 SMLMV. SMLMV 2026 = COP 1.750.905 → tope ≈ COP 3.502 millones.</td>
+<td><b>Hasta ≈ US$ 1,08 millones</b></td>
+<td>En 2025 la SIC impuso multas por más de COP 5.157 millones (≈ US$ 1,59 M acumulado); caso e-commerce: COP 214,4 M ≈ <b>US$ 66.300</b>.<br/><span class="src">Fuente: <a href="https://sedeelectronica.sic.gov.co/noticias" target="_blank" rel="noopener">sedeelectronica.sic.gov.co</a></span></td></tr>
+<tr><td><b>LGPD — Brasil</b><br/><span class="small">Lei 13.709/2018, art. 52 · ANPD</span></td>
+<td>Multa de hasta 2% de la facturación en Brasil, con tope de R$ 50 millones por infracción.</td>
+<td><b>Hasta ≈ US$ 9,1 millones</b> por infracción</td>
+<td>TikTok/ByteDance multada en R$ 153,7 millones ≈ <b>US$ 28 millones</b> (ANPD, ago-2026, datos de menores).<br/><span class="src">Fuente: <a href="https://www.gov.br/anpd" target="_blank" rel="noopener">gov.br/anpd</a></span></td></tr>
+<tr><td><b>RGPD/GDPR — Unión Europea</b><br/><span class="small">(referencia para empresas con clientes en la UE)</span></td>
+<td>Hasta € 20 millones o 4% de la facturación global anual (la que sea mayor).</td>
+<td><b>Hasta ≈ US$ 22,2 millones</b></td>
+<td>Meta: € 1.200 millones ≈ <b>US$ 1.330 millones</b> (DPC Irlanda, 2023); Uber: € 290 millones ≈ <b>US$ 322 millones</b> (AP Países Bajos, 2024).<br/><span class="src">Fuente: <a href="https://www.edpb.europa.eu" target="_blank" rel="noopener">edpb.europa.eu</a></span></td></tr>
+</tbody></table></div></div>
+<div class="note">⚠️ <b>Nota metodológica:</b> esta auditoría aporta <b>evidencia técnica parcial</b> hacia los controles normativos; no constituye una certificación ni una opinión legal. Los rangos y casos citados corresponden a fuentes oficiales vigentes a la fecha y deben confirmarse con asesoría jurídica.</div>
+</section>
+
+<section><h2>4. Riesgos prioritarios</h2>
+<p class="secsub">Haz clic en cada riesgo para ver su impacto de negocio y la acción correctiva recomendada.</p>
+<div id="risks"></div></section>
+
+<section><h2>5. Plan de remediación priorizado</h2>
+<p class="secsub" id="planIntro"></p>
+<h3 style="margin:10px 0 8px">🚀 Acciones rápidas (quick wins, &lt; 4 horas cada una)</h3>
+<ul class="planlist" id="qw"></ul>
+<h3 style="margin:16px 0 8px">🏗️ Proyectos (requieren planificación y ventanas de cambio)</h3>
+<ul class="planlist" id="pr"></ul>
+</section>
+
+<section><h2>6. Próximos pasos</h2>
+<ol class="steps">
+<li><b>Decisión de gerencia:</b> aprobar el plan de remediación (sección 5) y designar un responsable por proyecto.</li>
+<li><b>Primeras 4 semanas:</b> ejecutar los quick wins; re-auditar los controles corregidos con SecAuditAD (misma herramienta, evidencia comparable antes/después).</li>
+<li><b>Ciclo trimestral:</b> repetir la auditoría y presentar este informe a la gerencia para medir la tendencia del score.</li>
+<li><b>Continuidad y cumplimiento:</b> alinear las correcciones con el programa de protección de datos aplicable (LOPDP) y el plan de continuidad del negocio.</li>
+</ol></section>
+
+<footer>
+<b>Alcance:</b> auditoría técnica de solo lectura del Active Directory de <b>corpdemo.local</b> (dominio sintético de demostración) ejecutada el 2026-11-07 14:30 con la suite SecAuditAD (54 controles · plan Auditoría Premium (demo)). Este informe es evidencia parcial y no constituye certificación (ISO/NIST/CIS) ni dictamen legal.<br/>
+<b>Fuentes de sanciones:</b> SPDP Ecuador (Res. SPDP-SPD-2025-0022-R; primeras sanciones dic-2025) · Decreto 1377/2013 art. 25 y SIC Colombia · LGPD art. 52 y ANPD Brasil · EDPB/DPC/AP (UE).<br/>
+<b>SecAuditAD v1.0.0 — demo</b> · Run 44fa8312-160c-468f-beec-2b94de186665 · <a href="../index.html">SecAuditAD Application</a><br/>
+<b>Autor:</b> Alex Alcivar M — Guayaquil, Ecuador · Todos los derechos reservados.
+</footer></div>
+
+<script>const DATA = {"meta":{"tool":"SecAuditAD","version":"1.0.0","author":"Alex Alcivar M","generated":"2026-11-07 14:30","plan":"Auditoría Premium (demo)","contract":"SecAuditAD.AuditRun/1.0","runId":"44fa8312-160c-468f-beec-2b94de186665"},"client":"corpdemo.local","score":{"global":47.1,"band":"RIESGO CRÍTICO","bandEn":"CRITICAL RISK","color":"red","applicableWeight":331.0,"passedWeight":156.0,"perPhase":[{"phase":1,"phaseName":"Identidad y Permisos Núcleo","icon":"🔑","evaluated":12,"score":39.4,"applicableWeight":94.0,"passedWeight":37.0},{"phase":2,"phaseName":"Infraestructura y GPOs","icon":"🏢","evaluated":10,"score":65.5,"applicableWeight":58.0,"passedWeight":38.0},{"phase":3,"phaseName":"Infraestructura PKI (AD CS)","icon":"🔐","evaluated":4,"score":50.0,"applicableWeight":30.0,"passedWeight":15.0},{"phase":4,"phaseName":"Protocolos de Red y Mapeo Lateral","icon":"🌐","evaluated":13,"score":56.9,"applicableWeight":72.0,"passedWeight":41.0},{"phase":6,"phaseName":"Higiene y Línea Base (nueva fase consolidada)","icon":"🧹","evaluated":15,"score":32.5,"applicableWeight":77.0,"passedWeight":25.0}]},"summary":{"CONFORME":28,"NO_CONFORME":24,"NO_CONFORME_TECNICO":2,"TOTAL":54,"CRITICAL":4,"HIGH":16},"dimensions":{"continuity":["SecAuditAD-002","SecAuditAD-003","SecAuditAD-004","SecAuditAD-022","SecAuditAD-036"],"breach":["SecAuditAD-002","SecAuditAD-007","SecAuditAD-012","SecAuditAD-018","SecAuditAD-042","SecAuditAD-035"],"fines":["SecAuditAD-002","SecAuditAD-012","SecAuditAD-018","SecAuditAD-042"],"reputation":["SecAuditAD-001","SecAuditAD-002","SecAuditAD-012","SecAuditAD-018"]},"risks":[{"id":"SecAuditAD-001","name":"Higiene de Grupos de Máximo Privilegio (Tier 0)","phase":1,"sev":"HIGH","vector":"Enumeración y reutilización de credenciales de Domain/Enterprise/Schema Admins","impact":"Exceso de administradores: cada cuenta adicional es una puerta de entrada y una multa potencial.","remType":"PROYECTO","quickWin":"Revisar y deshabilitar miembros inactivos del día al día","project":"Depurar Tier 0: deshabilitar/eliminar cuentas inactivas y PNE injustificadas, mover admins a gMSA y al modelo de tiers; documentar break-glass.","effort":"MEDIO"},{"id":"SecAuditAD-003","name":"Integridad SDProp / ACL de AdminSDHolder","phase":1,"sev":"HIGH","vector":"Persistencia estructural vía AdminSDHolder (T1098)","impact":"Un atacante podría copiar TODAS las contraseñas del dominio y suplantar a cualquier usuario o administrador.","remType":"QUICK_WIN","quickWin":"Limpiar ACEs anómalas sobre CN=AdminSDHolder","project":"Verificar AdminSDHolder: eliminar ACEs anómalas y deshabilitar herencia si fue alterada; forzar SDProp (que lo ejecute el equipo de plataforma, no la herramienta).","effort":"BAJO"},{"id":"SecAuditAD-004","name":"AD CS — Plantillas con Inyección de SAN (ESC1)","phase":1,"sev":"CRITICAL","vector":"ESC1: suplantación de identidad vía SAN en plantilla publicada","impact":"Podrían emitirse certificados de identidad falsos: acceso a banca, VPN y correo corporativo en nombre de la empresa.","remType":"QUICK_WIN","quickWin":"Editar plantilla: quitar SAN en solicitud + requerir aprobación","project":"Corregir plantillas ESC1: desmarcar 'Suministrar en la solicitud' (ENROLLEE_SUPPLIES_SUBJECT), exigir aprobación del administrador CA y limitar inscripción a grupos justificados.","effort":"BAJO"},{"id":"SecAuditAD-005","name":"Delegación Incondicional (Unconstrained Delegation)","phase":1,"sev":"HIGH","vector":"Captura de TGTs en objetos con TRUSTED_FOR_DELEGATION (T1558)","impact":"Ruta de escalada de privilegios: el atacante pasa de usuario normal a administrador de la red.","remType":"PROYECTO","quickWin":"Inventario y desactivación de UOD en servidores legacy","project":"Retirar TRUSTED_FOR_DELEGATION de servidores que no lo requieran; sustituir por delegación restringida (con o sin transición) cuando exista necesidad de negocio.","effort":"MEDIO"},{"id":"SecAuditAD-007","name":"Exposición a Kerberoasting (SPN y Cifrados RC4)","phase":1,"sev":"CRITICAL","vector":"Kerberoasting / cracking offline de TGS (T1558.003)","impact":"Ruta de escalada de privilegios: el atacante pasa de usuario normal a administrador de la red.","remType":"PROYECTO","quickWin":"Forzar AES y rotar contraseñas de cuentas kerberoasteables","project":"Migrar cuentas con SPN a gMSA (msDS-GroupMSAMembership) o fijar contraseñas largas (>32 chars) + exigir AES256 (msDS-SupportedEncryptionTypes=24).","effort":"MEDIO"},{"id":"SecAuditAD-012","name":"Exposición de Secretos en Atributos de Texto","phase":1,"sev":"HIGH","vector":"Credenciales en description/info (T1552.001)","impact":"Contraseñas visibles en texto plano dentro del directorio: riesgo directo de fuga de datos personales (LOPDP).","remType":"QUICK_WIN","quickWin":"Rotar credenciales encontradas y vaciar los atributos","project":"Barrido de atributos description/info con secretos: rotar credenciales expuestas y mover secretos a un gestor (Key Vault / vault corporativo).","effort":"BAJO"},{"id":"SecAuditAD-018","name":"Integridad de SYSVOL y Credenciales GPP (cpassword)","phase":2,"sev":"CRITICAL","vector":"MS14-025 / lectura de cpassword en SYSVOL (T1552.006)","impact":"Contraseñas antiguas legibles por cualquier usuario del dominio (SYSVOL).","remType":"QUICK_WIN","quickWin":"Borrar Preferences con password del SYSVOL y rotar credenciales","project":"Eliminar XML de GPP con cpassword (los parches MS14-025 no borran el XML); migrar contraseñas de GPP a gMSA/LAPS/vault; revisar ACL de SYSVOL.","effort":"BAJO"},{"id":"SecAuditAD-019","name":"Permisos de Lectura de LAPS (Legacy y Windows LAPS)","phase":2,"sev":"HIGH","vector":"Lectura de administrador local vía LAPS","impact":"Ruta de escalada de privilegios: el atacante pasa de usuario normal a administrador de la red.","remType":"PROYECTO","quickWin":"Retirar lecturas masivas del atributo de contraseña LAPS","project":"Desplegar Windows LAPS con separación de roles; retirar lectura de ms-Mcs-AdmPwd/msLAPS-Password a usuarios estándar (quitar 'All extended rights' de OUs).","effort":"MEDIO"},{"id":"SecAuditAD-057","name":"Cobertura de Despliegue LAPS (Esquema y Parque)","phase":2,"sev":"HIGH","vector":"Movimiento lateral masivo por reutilización de contraseñas locales","impact":"Ruta de escalada de privilegios: el atacante pasa de usuario normal a administrador de la red.","remType":"PROYECTO","quickWin":"Windows LAPS es gratuito y nativo en Server 2019+/Win10 20H2+ — sin agentes","project":"Despliegue Windows LAPS con GPO (rotación automática, cifrado opcional) y verifique cobertura 100% del parque activo con este control.","effort":"MEDIO"},{"id":"SecAuditAD-022","name":"AD CS — ESC6 (EDITF_ATTRIBUTESUBJECTALTNAME2) y ESC7 (ManageCA/ManageCertificates)","phase":3,"sev":"CRITICAL","vector":"Inyección global de SAN / control administrativo de la CA","impact":"Podrían emitirse certificados de identidad falsos: acceso a banca, VPN y correo corporativo en nombre de la empresa.","remType":"QUICK_WIN","quickWin":"Quitar flag SAN global + sanear permisos de CA (requiere ventana de cambio)","project":"ESC6: retirar flag EDITF_ATTRIBUTESUBJECTALTNAME2 (certutil -setreg policy\\EditFlags -EDITF_ATTRIBUTESUBJECTALTNAME2 + reinicio CertSvc). ESC7: revisar pestaña Seguridad de la CA dejando solo Tier 0 PKI documentado.","effort":"BAJO"},{"id":"SecAuditAD-059","name":"Protección LSA (RunAsPPL) y Parcheo de DCs vía WinRM","phase":4,"sev":"HIGH","vector":"Volcado de LSASS y explotación de vulnerabilidades conocidas en DCs","impact":"Ruta de escalada de privilegios: el atacante pasa de usuario normal a administrador de la red.","remType":"PROYECTO","quickWin":"RunAsPPL se activa con GPO + reinicio escalonado; bloquea el volcado de LSASS","project":"Habilite LSA Protection vía GPO (RunAsPPL=1, idealmente UEFI Lock) y aplique las actualizaciones acumulativas mensuales en todos los DCs.","effort":"MEDIO"},{"id":"SecAuditAD-042","name":"Cifrado Reversible de Contraseñas","phase":6,"sev":"HIGH","vector":"Recuperación en claro de credenciales (T1003)","impact":"Ruta de escalada de privilegios: el atacante pasa de usuario normal a administrador de la red.","remType":"QUICK_WIN","quickWin":"Set-ADUser -AllowReversiblePasswordEncryption $false + rotación","project":"Deshabilitar cifrado reversible: quitar flag por cuenta y política 'Store passwords using reversible encryption'; rotar contraseñas afectadas.","effort":"BAJO"},{"id":"SecAuditAD-054","name":"Banderas de Riesgo en Cuentas (Guest/PASSWD_NOTREQD/RID-500/adminCount)","phase":6,"sev":"HIGH","vector":"Acceso semi-anónimo y autenticación sin credencial real","impact":"Ruta de escalada de privilegios: el atacante pasa de usuario normal a administrador de la red.","remType":"QUICK_WIN","quickWin":"Deshabilitar la cuenta Guest es un cambio de un minuto sin impacto funcional","project":"Deshabilite Guest, elimine PASSWD_NOTREQD de cuentas habilitadas, fije calendario de rotación del RID 500 y depure adminCount=1 huérfano.","effort":"BAJO"},{"id":"SecAuditAD-055","name":"Grupos Operadores Heredados y Grupos Vacíos","phase":6,"sev":"HIGH","vector":"Escalada de privilegios vía Account/Server/Print/Backup Operators y DnsAdmins","impact":"Ruta de escalada de privilegios: el atacante pasa de usuario normal a administrador de la red.","remType":"PROYECTO","quickWin":"Vaciar DnsAdmins bloquea la escalada conocida a SYSTEM en DCs","project":"Vacie los grupos Account/Server/Print/Backup Operators y DnsAdmins (migrar usos legítimos a delegación fina) y depure grupos vacíos del dominio.","effort":"MEDIO"},{"id":"SecAuditAD-056","name":"Inventario de Sistemas Operativos Obsoletos (DCs y Miembros)","phase":6,"sev":"HIGH","vector":"Explotación de sistemas sin parches de seguridad (DCs y estaciones)","impact":"Ruta de escalada de privilegios: el atacante pasa de usuario normal a administrador de la red.","remType":"PROYECTO","quickWin":"Desconectar (no deshabilitar) cuentas de equipo de XP/7/2003 evita su uso como pivote","project":"Planice la migración de DCs a Windows Server 2016+ y estaciones a Windows 11 (o ESU documentada); priorice controladores de dominio y servidores expuestos.","effort":"ALTO"}],"quickWins":[{"id":"SecAuditAD-002","name":"Derechos de Replicación DCSync en la Raíz del Dominio","action":"Retirar ACEs de replicación no estándar en dsacls/ADUC","effort":"BAJO"},{"id":"SecAuditAD-003","name":"Integridad SDProp / ACL de AdminSDHolder","action":"Limpiar ACEs anómalas sobre CN=AdminSDHolder","effort":"BAJO"},{"id":"SecAuditAD-004","name":"AD CS — Plantillas con Inyección de SAN (ESC1)","action":"Editar plantilla: quitar SAN en solicitud + requerir aprobación","effort":"BAJO"},{"id":"SecAuditAD-012","name":"Exposición de Secretos en Atributos de Texto","action":"Rotar credenciales encontradas y vaciar los atributos","effort":"BAJO"},{"id":"SecAuditAD-018","name":"Integridad de SYSVOL y Credenciales GPP (cpassword)","action":"Borrar Preferences con password del SYSVOL y rotar credenciales","effort":"BAJO"},{"id":"SecAuditAD-022","name":"AD CS — ESC6 (EDITF_ATTRIBUTESUBJECTALTNAME2) y ESC7 (ManageCA/ManageCertificates)","action":"Quitar flag SAN global + sanear permisos de CA (requiere ventana de cambio)","effort":"BAJO"},{"id":"SecAuditAD-030","name":"Resolución Multicast LLMNR","action":"GPO LLMNR off (impacto casi nulo en red AD moderna)","effort":"BAJO"},{"id":"SecAuditAD-032","name":"Servicio Print Spooler en Controladores de Dominio (PrintNightmare)","action":"GPO: deshabilitar servicio Print Spooler en DCs","effort":"BAJO"},{"id":"SecAuditAD-036","name":"Rotación de la Contraseña KRBTGT","action":"Doble rotación KRBTGT con ventana programada (no rompe servicios)","effort":"BAJO"},{"id":"SecAuditAD-038","name":"Higiene de Cuentas Inactivas (>90 días)","action":"Deshabilitar cuentas inactivas detectadas (con respaldo de lista)","effort":"BAJO"},{"id":"SecAuditAD-040","name":"Cuota de Creación de Cuentas de Máquina (MAQ)","action":"Set-ADDomain -Replace @{ 'ms-DS-MachineAccountQuota'=0 }","effort":"BAJO"},{"id":"SecAuditAD-042","name":"Cifrado Reversible de Contraseñas","action":"Set-ADUser -AllowReversiblePasswordEncryption $false + rotación","effort":"BAJO"},{"id":"SecAuditAD-054","name":"Banderas de Riesgo en Cuentas (Guest/PASSWD_NOTREQD/RID-500/adminCount)","action":"Deshabilitar la cuenta Guest es un cambio de un minuto sin impacto funcional","effort":"BAJO"}],"projects":[{"id":"SecAuditAD-001","name":"Higiene de Grupos de Máximo Privilegio (Tier 0)","action":"Depurar Tier 0: deshabilitar/eliminar cuentas inactivas y PNE injustificadas, mover admins a gMSA y al modelo de tiers; documentar break-glass.","effort":"MEDIO"},{"id":"SecAuditAD-005","name":"Delegación Incondicional (Unconstrained Delegation)","action":"Retirar TRUSTED_FOR_DELEGATION de servidores que no lo requieran; sustituir por delegación restringida (con o sin transición) cuando exista necesidad de negocio.","effort":"MEDIO"},{"id":"SecAuditAD-007","name":"Exposición a Kerberoasting (SPN y Cifrados RC4)","action":"Migrar cuentas con SPN a gMSA (msDS-GroupMSAMembership) o fijar contraseñas largas (>32 chars) + exigir AES256 (msDS-SupportedEncryptionTypes=24).","effort":"MEDIO"},{"id":"SecAuditAD-019","name":"Permisos de Lectura de LAPS (Legacy y Windows LAPS)","action":"Desplegar Windows LAPS con separación de roles; retirar lectura de ms-Mcs-AdmPwd/msLAPS-Password a usuarios estándar (quitar 'All extended rights' de OUs).","effort":"MEDIO"},{"id":"SecAuditAD-057","name":"Cobertura de Despliegue LAPS (Esquema y Parque)","action":"Despliegue Windows LAPS con GPO (rotación automática, cifrado opcional) y verifique cobertura 100% del parque activo con este control.","effort":"MEDIO"},{"id":"SecAuditAD-027","name":"Firma LDAP Obligatoria en DC (Anti LDAP Relay)","action":"Configurar LDAPServerIntegrity=2 (Require Signing) en DCs vía GPO + Channel Binding; validar aplicaciones legacy antes del despliegue.","effort":"MEDIO"},{"id":"SecAuditAD-035","name":"Arquitectura de Cuentas de Servicio (gMSA vs Estáticas)","action":"Migrar cuentas de servicio estáticas a gMSA/sMSA; implementar inventario de cuentas de servicio y rotación automática.","effort":"ALTO"},{"id":"SecAuditAD-059","name":"Protección LSA (RunAsPPL) y Parcheo de DCs vía WinRM","action":"Habilite LSA Protection vía GPO (RunAsPPL=1, idealmente UEFI Lock) y aplique las actualizaciones acumulativas mensuales en todos los DCs.","effort":"MEDIO"},{"id":"SecAuditAD-053","name":"Configuración Estructural del Dominio y Bosque","action":"Eleve los niveles funcionales a Windows Server 2016+ (tras validar compatibilidad), habilite la Papelera de Reciclaje de AD y verifique que dSHeuristics no permita LDAP anónimo.","effort":"MEDIO"},{"id":"SecAuditAD-055","name":"Grupos Operadores Heredados y Grupos Vacíos","action":"Vacie los grupos Account/Server/Print/Backup Operators y DnsAdmins (migrar usos legítimos a delegación fina) y depure grupos vacíos del dominio.","effort":"MEDIO"},{"id":"SecAuditAD-056","name":"Inventario de Sistemas Operativos Obsoletos (DCs y Miembros)","action":"Planice la migración de DCs a Windows Server 2016+ y estaciones a Windows 11 (o ESU documentada); priorice controladores de dominio y servidores expuestos.","effort":"ALTO"}]};
+const esc = s => (s==null?"":String(s)).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function colorOf(c){return {green:"#22c55e",yellow:"#eab308",orange:"#f97316",red:"#ef4444"}[c]||"#70707c";}
+
+/* donut */
+(function(){
+  const sc=DATA.score, pct=sc.global, col=colorOf(sc.color);
+  const R=80, C=2*Math.PI*R, dash=C*pct/100;
+  document.getElementById("donut").innerHTML =
+    `<circle cx="100" cy="100" r="${R}" fill="none" stroke="#1d1d25" stroke-width="16"/>`+
+    `<circle id="donutArc" cx="100" cy="100" r="${R}" fill="none" stroke="${col}" stroke-width="16" stroke-linecap="round" stroke-dasharray="0 ${C}" style="transition:stroke-dasharray 1.1s cubic-bezier(.2,.7,.3,1)"/>`;
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{document.getElementById("donutArc").setAttribute("stroke-dasharray",`${dash} ${C}`);}));
+  const b=document.getElementById("band"); b.textContent=sc.band; b.className="band "+sc.color;
+  document.getElementById("donutNum").textContent=pct;
+  document.getElementById("phaseBars").innerHTML = sc.perPhase.map(p=>`
+    <div class="hbar" style="margin:8px 0">
+      <div style="display:flex;justify-content:space-between;font-size:.8rem;margin-bottom:3px"><span>${esc(p.icon||"")} Fase ${p.phase}</span><span class="num">${p.score}/100</span></div>
+      <div style="height:8px;background:#1d1d25;border-radius:999px;overflow:hidden"><i data-w="${p.score}" style="display:block;height:100%;width:0;border-radius:999px;background:linear-gradient(90deg,#e11d2e,#ff4d5a);transition:width .9s"></i></div>
+    </div>`).join("");
+  setTimeout(()=>document.querySelectorAll("[data-w]").forEach(i=>i.style.width=i.dataset.w+"%"),160);
+})();
+
+/* riesgos expandibles */
+(function(){
+  const box=document.getElementById("risks");
+  if(!DATA.risks.length){box.innerHTML=`<p class="muted">No se identificaron hallazgos críticos ni altos en esta corrida. Mantener el ciclo de auditoría.</p>`;return;}
+  box.innerHTML=DATA.risks.map(r=>`
+    <div class="risk">
+      <div class="head">
+        <span class="chev">▶</span>
+        <div><b>${esc(r.id)} — ${esc(r.name)}</b><div class="sub">${esc(r.vector||"")}</div></div>
+        <div class="right"><span class="badge sv-${r.sev}">${r.sev}</span><br/><span class="small">Fase ${r.phase}</span></div>
+      </div>
+      <div class="body">
+        <div class="row"><b>Impacto de negocio:</b> ${esc(r.impact)}</div>
+        ${r.quickWin?`<div class="row"><b>Quick win (${esc(r.effort||"—")}):</b> ${esc(r.quickWin)}</div>`:""}
+        ${r.project?`<div class="row"><b>Proyecto (${esc(r.remType||"—")}):</b> ${esc(r.project)}</div>`:""}
+      </div>
+    </div>`).join("");
+  box.querySelectorAll(".risk .head").forEach(h=>h.addEventListener("click",()=>h.parentElement.classList.toggle("open")));
+})();
+
+/* plan de remediación interactivo */
+(function(){
+  const list=(items,box)=>{box.innerHTML=items.length?items.map(i=>`
+    <li><input type="checkbox"><span><b class="chip mono">${esc(i.id)}</b> ${esc(i.action)} <span class="tag ${i.effort==="BAJO"?"g":"o"}">${esc(i.effort||"")}</span></span></li>`).join("")
+    :`<p class="muted small">Sin elementos pendientes en esta categoría.</p>`;
+    box.querySelectorAll("input").forEach(cb=>cb.addEventListener("change",()=>cb.parentElement.classList.toggle("done",cb.checked)));};
+  list(DATA.quickWins,document.getElementById("qw"));
+  list(DATA.projects,document.getElementById("pr"));
+  const s=DATA.summary;
+  document.getElementById("planIntro").textContent=`${s.CRITICAL} hallazgos críticos y ${s.HIGH} altos distribuidos en ${s.NO_CONFORME} controles no conformes. Marca el avance conforme el equipo TI complete cada acción.`;
+})();
+
+/* contadores */
+document.querySelectorAll(".kpi b[data-count]").forEach(el=>{
+  const target=+el.dataset.count;let cur=0;const step=Math.max(1,Math.round(target/28));
+  const t=setInterval(()=>{cur+=step;if(cur>=target){cur=target;clearInterval(t);}el.textContent=cur;},28);
+});
+document.getElementById("btnPrint").addEventListener("click",()=>window.print());</script></body></html>

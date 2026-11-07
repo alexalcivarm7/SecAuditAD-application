@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SecAuditAD Application — Auditoría de Active Directory en Ecuador</title>
+<meta name="description" content="Auditoría profesional de Active Directory con planes Jr, Senior y Premium para Ecuador. Solo lectura, score 0-100 e informes en USD.">
+<meta name="author" content="Alex Alcivar M">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="index.html"><svg width="27" height="31" viewBox="0 0 24 26" fill="none" aria-hidden="true"><path d="M12 1 2.5 4.6v7.1c0 6.2 4 11.6 9.5 13.3 5.5-1.7 9.5-7.1 9.5-13.3V4.6L12 1Z" fill="rgba(225,29,46,.16)" stroke="#e11d2e" stroke-width="1.6"/><path d="M7.5 12.4l3.1 3.2 6-6.4" stroke="#ff4d5a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Sec<b>Audit</b>AD <span class="app">Application</span></a>
+    <nav class="main"><a href="index.html" class="active">Inicio</a>
+<a href="planes.html">Planes</a>
+<a href="propuesta.html">Propuesta</a>
+<a href="controles.html">Controles</a>
+<a href="demo.html">Demo</a>
+<a href="informes.html">Informes</a>
+<a href="normativa.html">Normativa</a>
+<a href="nexos.html">Nexos</a></nav>
+  </div>
+</header>
+<main>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="kicker">Guayaquil, Ecuador · Valores en USD</span>
+    <h1>Auditoría profesional de <em>Active Directory</em>,<br>sin tocar tu infraestructura.</h1>
+    <p class="lead">SecAuditAD ejecuta una auditoría <b>solo lectura</b> de tu dominio con dictamen binario por control,
+    score 0-100 defendible e informes que la gerencia entiende. Elige uno de los <b>3 planes</b> y el motor ejecuta
+    exactamente las fases que contratas.</p>
+    <div class="cta">
+      <a class="btn" href="planes.html">Ver planes y precios</a>
+      <a class="btn ghost" href="demo.html">Probar la demo interactiva</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><b id="st-controls">—</b><span>controles automatizados</span></div>
+      <div class="stat"><b id="st-phases">—</b><span>fases de ejecución</span></div>
+      <div class="stat"><b id="st-plans">—</b><span>planes de auditoría</span></div>
+      <div class="stat"><b>0</b><span>modificaciones al entorno</span></div>
+      <div class="stat"><b>USD</b><span>moneda de referencia</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <header class="reveal">
+      <span class="eyebrow">Metodología</span>
+      <h2>La auditoría, segmentada por fases</h2>
+      <p class="sub">Cada fase agrupa controles de un dominio técnico. Los planes combinan fases: Jr cubre identidad e higiene; Senior añade infraestructura y protocolos; Premium incluye además la PKI (AD CS).</p>
+    </header>
+    <div class="grid g3" id="phaseCards"></div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <header class="reveal">
+      <span class="eyebrow">Planes</span>
+      <h2>Elige el plan según tu necesidad</h2>
+      <p class="sub">Valores referenciales para Ecuador. El plan contratado define qué fases ejecuta el motor (parámetro <span class="chip mono">-Plan</span> del framework).</p>
+    </header>
+    <div class="grid g3" id="planCards"></div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <header class="reveal">
+      <span class="eyebrow">Proceso</span>
+      <h2>Cómo trabajamos</h2>
+    </header>
+    <div class="steps">
+      <div class="step"><h3>Plan y preparación</h3><p>Acordamos el plan (Jr, Senior o Premium), ajustamos el baseline de tu organización y agendamos la ejecución.</p></div>
+      <div class="step"><h3>Ejecución solo lectura</h3><p>El motor corre los controles del plan en 1-3 días desde un DC o estación con RSAT. Sin agentes, sin cambios, con timeout por control.</p></div>
+      <div class="step"><h3>Score e informes</h3><p>Obtienes score 0-100 ponderado, informe técnico interactivo y ejecutivo en lenguaje de negocio con exposición sancionatoria en USD.</p></div>
+      <div class="step"><h3>Remediación verificada</h3><p>Plan priorizado (quick wins vs proyectos) y, en el plan Premium, taller con tu equipo TI y re-auditoría de verificación a 30 días.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="card reveal" style="display:flex;gap:20px;align-items:center;justify-content:space-between;flex-wrap:wrap;border-color:rgba(225,29,46,.4)">
+      <div>
+        <h3 style="font-size:1.25rem">¿Listo para proteger el «anillo maestro de llaves» de tu organización?</h3>
+        <p>La identidad administrativa controla el acceso a todo. Auditarla es la primera decisión de seguridad seria.</p>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a class="btn" href="propuesta.html">Solicitar propuesta</a>
+        <a class="btn ghost" href="nexos.html">¿Por qué es urgente? (multas reales)</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="site">
+  <div class="wrap">
+    <div class="cols">
+      <div style="max-width:360px">
+        <a class="brand" href="index.html"><svg width="27" height="31" viewBox="0 0 24 26" fill="none" aria-hidden="true"><path d="M12 1 2.5 4.6v7.1c0 6.2 4 11.6 9.5 13.3 5.5-1.7 9.5-7.1 9.5-13.3V4.6L12 1Z" fill="rgba(225,29,46,.16)" stroke="#e11d2e" stroke-width="1.6"/><path d="M7.5 12.4l3.1 3.2 6-6.4" stroke="#ff4d5a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Sec<b>Audit</b>AD</a>
+        <p class="small" style="margin-top:10px">Suite propietaria de auditoría de seguridad de Active Directory — solo lectura, dictamen binario y score 0-100 con evidencia defendible.</p>
+      </div>
+      <div>
+        <p class="eyebrow" style="margin-bottom:8px">Navegación</p>
+        <p class="small"><a href="index.html" class="active">Inicio</a>
+<a href="planes.html">Planes</a>
+<a href="propuesta.html">Propuesta</a>
+<a href="controles.html">Controles</a>
+<a href="demo.html">Demo</a>
+<a href="informes.html">Informes</a>
+<a href="normativa.html">Normativa</a>
+<a href="nexos.html">Nexos</a></p>
+      </div>
+      <div>
+        <p class="eyebrow" style="margin-bottom:8px">Contacto</p>
+        <p class="small">
+          Alex Alcivar M · Guayaquil, Ecuador<br>
+          <a href="#" data-contact="whatsapp"></a><br>
+          <a href="#" data-contact="email"></a><br>
+          <a href="#" data-contact="linkedin"></a>
+        </p>
+      </div>
+    </div>
+    <div class="legal">
+      © 2026 <b>Alex Alcivar M</b> · Guayaquil, Ecuador · Todos los derechos reservados · Obra propietaria: prohibida su copia, modificación o reutilización (ver licencia en el repositorio SecAuditAD).<br>
+      Valores expresados en <b>dólares estadounidenses (USD)</b> · SecAuditAD v1.0.0 · Los casos de sanciones citan fuentes oficiales; las conversiones a USD son referenciales.
+    </div>
+  </div>
+</footer>
+<div class="overlay" id="overlay" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true">
+    <button class="close" onclick="closeModal()" aria-label="Cerrar">✕</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+(function(){
+  document.getElementById("st-controls").textContent = DATA.CONTROLS.length;
+  var phs = Object.keys(DATA.PHASES).map(k=>DATA.PHASES[k]).filter(p=>DATA.CONTROLS.some(c=>c.phase===p.id)).sort((a,b)=>a.id-b.id);
+  document.getElementById("st-phases").textContent = phs.length;
+  document.getElementById("st-plans").textContent = Object.keys(DATA.PLANS).length;
+
+  document.getElementById("phaseCards").innerHTML = phs.map(p=>{
+    var cs = DATA.CONTROLS.filter(c=>c.phase===p.id);
+    var w = cs.reduce((a,c)=>a+c.weight,0);
+    return '<div class="phasecard reveal in"><span class="ph-num">'+p.id+'</span><h3>'+p.name+'</h3>'+
+      '<p>'+cs.length+' controles automatizados de solo lectura, con dictamen binario y evidencia por control.</p>'+
+      '<div class="foot"><span>Peso en el score</span><b>'+w+' pts</b></div></div>';
+  }).join("");
+
+  var order = ["JR","SENIOR","PREMIUM"];
+  document.getElementById("planCards").innerHTML = order.map(function(k){
+    var p = DATA.PLANS[k];
+    var feats = p.deliverables.slice(0,3);
+    return '<div class="plancard reveal in'+(k==="PREMIUM"?" featured":"")+'">'+
+      (k==="PREMIUM"?'<span class="ribbon">Integral · incluye PKI</span>':"")+
+      '<h3>'+p.label+'</h3><p class="tagline">'+p.description+'</p>'+
+      '<div class="price"><b>US$ '+p.priceUSD.toLocaleString("es-EC")+'</b><span>valor referencial</span></div>'+
+      '<div class="meta"><span class="chip acc">'+p.controls+' controles</span><span class="chip">'+p.durationDays+' día'+(p.durationDays>1?"s":"")+'</span><span class="chip">Fases '+p.phases.join(", ")+'</span></div>'+
+      '<ul>'+feats.map(f=>'<li>'+f+'</li>').join("")+'</ul>'+
+      '<a class="btn'+(k==="PREMIUM"?"":" ghost")+'" href="propuesta.html?plan='+k+'">Solicitar esta auditoría</a></div>';
+  }).join("");
+})();
+</script>
+</body>
+</html>
